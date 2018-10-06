@@ -1,0 +1,39 @@
+const Card = (props) => {
+	return (
+  	<div style={{margin: '1em'}}>
+  	  <img width="75" src={props.avatar_url} />
+      <div style={{display: 'inline-block', marginLeft: 10}}>
+        <div style={{fontSize: '1.25em', fontWeight: 'bold'}}>{props.name}</div>
+        <div>{props.bio}</div>
+      </div>
+  	</div>
+  );
+};
+
+let data = [
+	{
+  	name: 'Avi',
+    avatar_url: 'https://avatars1.githubusercontent.com/u/1398711?v=4',
+    bio: 'Salesforce Developer @CloudAnswers'
+  },
+	{
+  	name: 'Jagmohan Singh',
+    avatar_url: 'https://avatars1.githubusercontent.com/u/3068659?v=4',
+    bio: 'Salesforce Developer @CloudAnswers'
+  },
+  {
+  	name: 'Gulshan Raj',
+    avatar_url: 'https://avatars0.githubusercontent.com/u/12070240?v=4',
+    bio: 'Salesforce Developer @CloudAnswers'
+  }
+];
+
+const CardList = (props) => {
+	return (
+  	<div>
+  	  {props.cards.map(card => <Card {...card} />)}
+  	</div>
+  );
+}
+
+ReactDOM.render(<CardList cards={data} />, mountNode);
