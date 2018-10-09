@@ -112,7 +112,9 @@ const DoneFrame = (props) => {
   return (
     <div className="text-center">
       <h2>{props.doneStatus}</h2>
-      <button className="btn btn-secondary">
+      <button 
+        className="btn btn-secondary"
+        onClick={props.resetGame}>
         Play Again
       </button>
     </div>
@@ -175,7 +177,7 @@ class Game extends React.Component {
   
   possibleSolutions = ({randomNumberOfStars, usedNumbers}) => {
     const possibleNumbers = _.range(1, 10).filter(number => 
-      usedNumbers.indexOf(number) !== -1
+      usedNumbers.indexOf(number) === -1
     );
     
     return possibleCombinationSum(possibleNumbers, randomNumberOfStars);
@@ -189,7 +191,7 @@ class Game extends React.Component {
       if(prevState.redraws === 0 && !this.possibleSolutions(prevState)){
         return {doneStatus: 'Game Over!'};
       }
-    })
+    });
   }
   
   render(){
